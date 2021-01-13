@@ -22,7 +22,7 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
 app.post('/addData', addData);
 app.get('/all', sendData);
