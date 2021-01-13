@@ -1,3 +1,5 @@
+var path = require('path')
+
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
@@ -27,10 +29,16 @@ app.use(express.static('dist'));
 app.post('/addData', addData);
 app.get('/all', sendData);
 
-// Setup Server
-const port = 8000;
-/* Spin up the server */
-const server = app.listen(port, listening);
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + 'dist/index.html')
+})
+
+console.log(__dirname);
+
+// designates what port the app will listen to for incoming requests
+app.listen(8000, function () {
+    console.log('Example app listening on port 8000!')
+})
 
 function listening() {
     console.log("server running");
