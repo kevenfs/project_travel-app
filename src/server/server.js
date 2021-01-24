@@ -2,7 +2,6 @@ var path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
-const axios = require('axios').default;
 
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};

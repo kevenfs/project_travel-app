@@ -5,32 +5,34 @@ import './styles/style.scss'
 let d = new Date();
 let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
 
-// Personal API Key for OpenWeatherMap API
+// Personal API Key for GeoNames API
 /* Function to GET Web API Data */
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&appid=de81d521f112510def4e1ed18f97247c&units=metric';
+const baseURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=kevenfs`;
 
 
 /* Function called by event listener */
 const performAction = async (e) => {
     const newCity = document.getElementById('city').value;
-    const data = await getDataFromGeoNames(username, newCity);
+    const data = await getDataFromGeoNames(baseURL, newCity);
     // postDataToServer(data.main.temp);
     // getRecentEntryData();
 }
 
 /*  Fetch coordinates from the geonames API using the destination name */
 
-const getDataFromGeoNames = async (username, city) => {
-    const url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`;
+const getDataFromGeoNames = async (baseURL) => {
+
+    const res = await fetch(baseURL)
     try {
-        return await axios.get(url)
-            .then(res => {
-                return {
-                    lat: res.data.geonames[0].lat,
-                    lng: res.data.geonames[0].lng
-                }
-            });
+
+        const data = await res.json();
+        console.log(data)
+        res => {
+            return {
+                lat: res.data.geonames[0].lat,
+                lng: res.data.geonames[0].lng
+            }
+        };
     } catch (error) {
         console.log("error", error);
         // appropriately handle the error
