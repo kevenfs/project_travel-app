@@ -1,3 +1,8 @@
+import {
+    getDataFromGeoNames
+} from './js/getCoordinates'
+
+
 import './styles/style.scss'
 
 
@@ -12,32 +17,12 @@ const baseURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username
 
 /* Function called by event listener */
 const performAction = async (e) => {
-    const newCity = document.getElementById('city').value;
-    const data = await getDataFromGeoNames(baseURL, newCity);
+    const location = document.getElementById('city').value;
+    const coordinates = await getDataFromGeoNames(baseURL, location);
     // postDataToServer(data.main.temp);
     // getRecentEntryData();
 }
 
-/*  Fetch coordinates from the geonames API using the destination name */
-
-const getDataFromGeoNames = async (baseURL) => {
-
-    const res = await fetch(baseURL)
-    try {
-
-        const data = await res.json();
-        console.log(data)
-        res => {
-            return {
-                lat: res.data.geonames[0].lat,
-                lng: res.data.geonames[0].lng
-            }
-        };
-    } catch (error) {
-        console.log("error", error);
-        // appropriately handle the error
-    }
-}
 
 // const postDataToServer = async (temp) => {
 
