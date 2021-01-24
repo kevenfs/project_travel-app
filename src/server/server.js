@@ -51,9 +51,9 @@ function sendData(request, response) {
 
 function addData(request, response) {
 
-    let data = request.body;
+    let coordinates = request.body;
 
-    console.log('server side data ', data)
+    console.log('server side data ', coordinates)
 
     // date -> date
     // temp -> temperature

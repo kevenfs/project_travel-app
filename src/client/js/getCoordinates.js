@@ -1,8 +1,8 @@
 /*  Fetch coordinates from the geonames API using the destination name */
 
-const getDataFromGeoNames = async (baseURL) => {
+const getDataFromGeoNames = async (geoURL) => {
 
-    const res = await fetch(baseURL)
+    const res = await fetch(geoURL)
     try {
 
         const coordinates = await res.json();

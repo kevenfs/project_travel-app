@@ -1,6 +1,12 @@
+require('dotenv').config()
+'resolve.fallback: { "path": require.resolve("path-browserify") }'
+
 import {
     getDataFromGeoNames
 } from './js/getCoordinates'
+import {
+    getImage
+} from './js/getImage';
 
 
 import './styles/style.scss'
@@ -10,16 +16,26 @@ import './styles/style.scss'
 let d = new Date();
 let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
 
-// Personal API Key for GeoNames API
-/* Function to GET Web API Data */
-const baseURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=kevenfs`;
+// GEONAMES
+/* Function to GET GeoNames API Data */
+const geoURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=kevenfs`;
+
+//PIXABAY
+/* Function to GET Pixabay API Data */
+const pixaURL = `https://pixabay.com/api/?key=${process.env.PIXABAY_APIKEY}&q=${city}&image_type=photo`;
+
 
 
 /* Function called by event listener */
 const performAction = async (e) => {
     const location = document.getElementById('city').value;
-    const coordinates = await getDataFromGeoNames(baseURL, location);
+
+    const coordinates = await getDataFromGeoNames(geoURL, location);
+    console.log(coordinates, "GeoNames API works");
+
     // postDataToServer(data.main.temp);
+
+    const image = await getImage(pixaURL, location);
     // getRecentEntryData();
 }
 
