@@ -1,3 +1,15 @@
+import {
+    getDataFromGeoNames
+} from './js/getCoordinates'
+
+import {
+    getImageFromPixaBay
+} from './js/getImage'
+
+import {
+    getDataFromGeoNames
+} from './js/getCoordinates'
+
 var path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -22,46 +34,40 @@ app.use(bodyParser.json());
 // Initialize the main project folder
 app.use(express.static('dist'));
 
-app.post('/addData', addData);
-app.get('/all', sendData);
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + 'dist/index.html')
-})
-
-console.log(__dirname);
-
 // designates what port the app will listen to for incoming requests
 app.listen(8000, function () {
-    console.log('Example app listening on port 8000!')
+    console.log('Travel app on server is listening on port 8000')
 })
 
-function listening() {
-    console.log("server running");
-    console.log(`running on localhost: ${port}`);
-};
-
-// Callback function to complete GET '/all'
-
-function sendData(request, response) {
-    response.send(projectData);
-};
+app.post('/travel', getTravelInfo);
 
 // Post Function
 
-function addData(request, response) {
+function getTravelInfo(request, response) {
 
-    let coordinates = request.body;
+    let city = request.body;
+    let date = request.body;
 
-    console.log('server side data ', coordinates)
+    // 1. GET CITY + DATE FROM CLIENT
 
-    // date -> date
-    // temp -> temperature
-    // feelings -> user's input
+    console.log('Server: ', city, date)
 
-    projectData["date"] = data.date;
-    projectData["temp"] = data.temp;
-    projectData["feel"] = data.feeling;
+    // 2. CALL TO GEONAMES
 
-    response.send(projectData);
+    const coordinates = await getDataFromGeoNames(geoURL, location);
+
+    // 3. RECEIVE FROM GEONAMES
+
+    console.log('Server: ', coordinates, "GeoNames API works");
+
+    // STEPS 4 to 7
+    const image = await getImageFromPixaBay(pixaURL, location);
+
+    // 8. PREPARE DATE FOR CLIENT
+
+    let data = null
+    data["url"] = data.date;
+    data["weather"] = data.temp;
+
+    response.send(data);
 }

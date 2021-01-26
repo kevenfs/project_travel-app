@@ -1,4 +1,11 @@
-const getImage = (city) => {
+require('dotenv').config()
+
+//PIXABAY
+/* Function to GET Pixabay API Data */
+
+const pixaURL = `https://pixabay.com/api/?key=${process.env.PIXABAY_APIKEY}&q=${city}&image_type=photo`;
+
+const getImageFromPixaBay = (city) => {
 
     let location = {
         city: city
@@ -21,5 +28,5 @@ const getImage = (city) => {
 
 
 export {
-    getImage
+    getImageFromPixaBay
 }
