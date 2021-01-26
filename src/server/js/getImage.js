@@ -3,13 +3,13 @@ require('dotenv').config()
 //PIXABAY
 /* Function to GET Pixabay API Data */
 
-const pixaURL = `https://pixabay.com/api/?key=${process.env.PIXABAY_APIKEY}&q=${city}&image_type=photo`;
-
 const getImageFromPixaBay = (city) => {
 
     let location = {
         city: city
     };
+
+    const pixaURL = `https://pixabay.com/api/?key=${process.env.PIXABAY_APIKEY}&q=${city}&image_type=photo`;
 
     fetch("http://localhost:8000/image", {
             method: "POST",
@@ -27,6 +27,6 @@ const getImageFromPixaBay = (city) => {
 }
 
 
-export {
+module.exports = {
     getImageFromPixaBay
 }

@@ -1,22 +1,15 @@
-import {
+const {
     getDataFromGeoNames
-} from './js/getCoordinates'
+} = require('./js/getCoordinates.js')
 
-import {
+const {
     getImageFromPixaBay
-} from './js/getImage'
-
-import {
-    getDataFromGeoNames
-} from './js/getCoordinates'
+} = require('./js/getImage.js')
 
 var path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
-
-// Setup empty JS object to act as endpoint for all routes
-projectData = {};
 
 // Start up an instance of app
 const app = express();
@@ -39,11 +32,11 @@ app.listen(8000, function () {
     console.log('Travel app on server is listening on port 8000')
 })
 
-app.post('/travel', getTravelInfo);
+
 
 // Post Function
 
-function getTravelInfo(request, response) {
+const getTravelInfo = async (request, response) => {
 
     let city = request.body;
     let date = request.body;
@@ -54,14 +47,14 @@ function getTravelInfo(request, response) {
 
     // 2. CALL TO GEONAMES
 
-    const coordinates = await getDataFromGeoNames(geoURL, location);
+    const coordinates = await getDataFromGeoNames(city);
 
     // 3. RECEIVE FROM GEONAMES
 
     console.log('Server: ', coordinates, "GeoNames API works");
 
     // STEPS 4 to 7
-    const image = await getImageFromPixaBay(pixaURL, location);
+    // const image = await getImageFromPixaBay(pixaURL, location);
 
     // 8. PREPARE DATE FOR CLIENT
 
@@ -71,3 +64,5 @@ function getTravelInfo(request, response) {
 
     response.send(data);
 }
+
+app.post('/travel', getTravelInfo);

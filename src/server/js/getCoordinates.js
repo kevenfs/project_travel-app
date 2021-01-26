@@ -3,14 +3,14 @@ require('dotenv').config()
 // GEONAMES
 /* Function to GET GeoNames API Data */
 
-const geoURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=kevenfs`;
-
-
 /*  Fetch coordinates from the geonames API using the destination name */
 
-const getDataFromGeoNames = async (geoURL) => {
+const getDataFromGeoNames = async (city) => {
+
+    const geoURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${process.env.GEONAMES_USERNAME}`;
 
     const res = await fetch(geoURL)
+
     try {
 
         const coordinates = await res.json();
@@ -27,6 +27,6 @@ const getDataFromGeoNames = async (geoURL) => {
 }
 
 
-export {
+module.exports = {
     getDataFromGeoNames
 }
