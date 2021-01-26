@@ -1,15 +1,10 @@
 import './styles/style.scss'
 
 
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
-
-
 /* Function called by event listener */
 const performAction = async (e) => {
-    const city = document.getElementById('city').value || null;
-    const date = null
+    const city = document.getElementById('city').value;
+    const date = document.getElementById('start').value;
 
     console.log('Client: ', city, date)
 
