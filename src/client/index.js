@@ -4,9 +4,10 @@ import './styles/style.scss'
 /* Function called by event listener */
 const performAction = async (e) => {
     const city = document.getElementById('city').value;
-    const date = document.getElementById('start').value;
+    const startDate = document.getElementById('start').value;
+    const endDate = document.getElementById('end').value;
 
-    console.log('Client: ', city, date)
+    console.log('Client: ', city, startDate, endDate)
 
     const res = await fetch('http://localhost:8000/travel',
 
@@ -17,8 +18,9 @@ const performAction = async (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                date: date,
-                city: city
+                Where: city,
+                Arriving: startDate,
+                Leaving: endDate
             })
         });
     try {

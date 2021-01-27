@@ -1,14 +1,16 @@
 require('dotenv').config();
 const fetch = require("node-fetch");
 
-// GEONAMES
+
+// WEATHERBIT
 /* Function to GET WeatherBit API Data */
 
 /*  Fetch weather from the weatherbit API using coordinates from geonames API & date from client */
 
-const getForecastFromWeatherBit = async (lat, lng, date) => {
 
-    const weatherURL = `https: //api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${lng}&start_date=${date}&key=${process.env.WEATHERBIT_APIKEY}`;
+const getForecastFromWeatherBit = async (lat, lng, startDate, endDate) => {
+
+    const weatherURL = `https: //api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${lng}&start_date=${startDate}&end_date=${endDate}&key=${process.env.WEATHERBIT_APIKEY}`;
 
     const res = await fetch(weatherURL)
 

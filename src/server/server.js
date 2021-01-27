@@ -3,6 +3,10 @@ const {
 } = require('./js/getCoordinates.js')
 
 const {
+    getForecastFromWeatherBit
+} = require('./js/getWeather.js')
+
+const {
     getImageFromPixaBay
 } = require('./js/getImage.js')
 
@@ -55,7 +59,7 @@ const getTravelInfo = async (request, response) => {
 
     // 4. CALL TO WEATHERBIT
 
-    const weather = await getForecastFromWeatherBit(weatherURL, lat, lng, date);
+    const weather = await getForecastFromWeatherBit(lat, lng, date);
 
     // 5. RECEIVE FROM WEATHERBIT
 
