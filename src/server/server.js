@@ -53,10 +53,23 @@ const getTravelInfo = async (request, response) => {
 
     console.log('Server: ', coordinates, "GeoNames API works");
 
-    // STEPS 4 to 7
-    // const image = await getImageFromPixaBay(pixaURL, location);
+    // 4. CALL TO WEATHERBIT
 
-    // 8. PREPARE DATE FOR CLIENT
+    const weather = await getForecastFromWeatherBit(weatherURL, lat, lng, date);
+
+    // 5. RECEIVE FROM WEATHERBIT
+
+    console.log('Server: ', weather, "WeatherBit API works");
+
+    // 6. CALL TO PIXABAY
+
+    const image = await getImageFromPixaBay(pixaURL, location);
+
+    // 7. RECEIVE FROM PIXABAY
+
+    console.log('Server: ', image, "PixaBay API works");
+
+    // 8. PREPARE DATA FOR CLIENT
 
     let data = null
     data["url"] = data.date;

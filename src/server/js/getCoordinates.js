@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+const fetch = require("node-fetch");
 
 // GEONAMES
 /* Function to GET GeoNames API Data */
@@ -14,6 +15,8 @@ const getDataFromGeoNames = async (city) => {
     try {
 
         const coordinates = await res.json();
+
+        console.log(coordinates);
 
         return {
             lat: coordinates.data.geonames[0].lat,

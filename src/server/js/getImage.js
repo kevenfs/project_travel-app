@@ -1,11 +1,12 @@
-require('dotenv').config()
+require('dotenv').config();
+const fetch = require("node-fetch");
 
 //PIXABAY
 /* Function to GET Pixabay API Data */
 
 const getImageFromPixaBay = (city) => {
 
-    let location = {
+    const location = {
         city: city
     };
 
