@@ -19,8 +19,8 @@ const getDataFromGeoNames = async (city) => {
         console.log(coordinates);
 
         return {
-            lat: coordinates.data.geonames[0].lat,
-            lng: coordinates.data.geonames[0].lng
+            lat: coordinates.geonames[0].lat,
+            lng: coordinates.geonames[0].lng
         }
 
     } catch (error) {
