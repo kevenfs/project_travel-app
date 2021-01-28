@@ -26,12 +26,13 @@ const performAction = async (e) => {
     try {
 
         const data = await res.json();
-        console.log(data) // weather + url
+        console.log(data) // weather + image
 
         // 9. UPDATE THE WEATHER AND PHOTO ON THE CLIENT
 
-        document.getElementById('cityImg').src = allData.date;
-        document.getElementById('weather').innerHTML = allData.temp;
+        document.getElementById('dates').innerHTML = allData.date;
+        document.getElementById('forecast').innerHTML = allData.weather;
+        document.getElementById('image').src = allData.image;
 
         return data;
     } catch (error) {

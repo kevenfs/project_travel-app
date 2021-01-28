@@ -59,7 +59,9 @@ const getTravelInfo = async (request, response) => {
 
     // 4. CALL TO WEATHERBIT
 
-    const weather = await getForecastFromWeatherBit(lat, lng, date);
+    let startDate = request.body.Arriving;
+    let endDate = request.body.Leaving;
+    const weather = await getForecastFromWeatherBit(coordinates.lat, coordinates.lng, startDate, endDate);
 
     // 5. RECEIVE FROM WEATHERBIT
 
@@ -67,7 +69,7 @@ const getTravelInfo = async (request, response) => {
 
     // 6. CALL TO PIXABAY
 
-    const image = await getImageFromPixaBay(pixaURL, location);
+    const image = await getImageFromPixaBay(city);
 
     // 7. RECEIVE FROM PIXABAY
 
@@ -76,8 +78,9 @@ const getTravelInfo = async (request, response) => {
     // 8. PREPARE DATA FOR CLIENT
 
     let data = null
-    data["url"] = data.date;
+    data["date"] = data.date;
     data["weather"] = data.temp;
+    data["image"] = data.image;
 
     response.send(data);
 }

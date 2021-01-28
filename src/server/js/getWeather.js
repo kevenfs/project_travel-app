@@ -10,7 +10,9 @@ const fetch = require("node-fetch");
 
 const getForecastFromWeatherBit = async (lat, lng, startDate, endDate) => {
 
-    const weatherURL = `https: //api.weatherbit.io/v2.0/history/daily?lat=${lat}&lon=${lng}&start_date=${startDate}&end_date=${endDate}&key=${process.env.WEATHERBIT_APIKEY}`;
+    const weatherURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lng}&start_date=${startDate}&end_date=${endDate}&key=${process.env.WEATHERBIT_APIKEY}`;
+
+    console.log(weatherURL)
 
     const res = await fetch(weatherURL)
 
@@ -21,9 +23,9 @@ const getForecastFromWeatherBit = async (lat, lng, startDate, endDate) => {
         console.log(weather);
 
         return {
-            max: weather.data.max_temp,
-            min: weather.data.min_temp,
-            precipitation: weather.data.precip
+            max: weather.max_temp,
+            min: weather.min_temp,
+            precipitation: weather.precip
         }
 
     } catch (error) {
