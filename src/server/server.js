@@ -32,8 +32,8 @@ app.use(bodyParser.json());
 app.use(express.static('dist'));
 
 // designates what port the app will listen to for incoming requests
-app.listen(8000, function () {
-    console.log('Travel app on server is listening on port 8000')
+app.listen(8080, function () {
+    console.log('Travel app on server is listening on port 8080')
 })
 
 
