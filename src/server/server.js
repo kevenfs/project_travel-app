@@ -77,10 +77,13 @@ const getTravelInfo = async (request, response) => {
 
     // 8. PREPARE DATA FOR CLIENT
 
-    let data = null
-    data["date"] = data.date;
-    data["weather"] = data.temp;
-    data["image"] = data.image;
+    let data = {}
+    data["date"] = {
+        startDate: startDate,
+        endDate: endDate
+    };
+    data["weather"] = weather;
+    data["image"] = image;
 
     response.send(data);
 }

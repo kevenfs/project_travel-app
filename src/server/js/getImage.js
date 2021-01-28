@@ -14,10 +14,10 @@ const getImageFromPixaBay = async (city) => {
 
         const image = await res.json();
 
-        console.log(image);
+        console.log(image.hits[0].webformatURL);
 
         return {
-            image: image.webformatURL
+            image: image.hits[0].webformatURL
         }
 
     } catch (error) {

@@ -20,12 +20,12 @@ const getForecastFromWeatherBit = async (lat, lng, startDate, endDate) => {
 
         const weather = await res.json();
 
-        console.log(weather);
+        console.log(weather.data[0].max_temp);
 
         return {
-            max: weather.max_temp,
-            min: weather.min_temp,
-            precipitation: weather.precip
+            max: weather.data[0].max_temp,
+            min: weather.data[0].min_temp,
+            precipitation: weather.data[0].precip
         }
 
     } catch (error) {
