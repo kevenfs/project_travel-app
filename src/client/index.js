@@ -9,7 +9,7 @@ const performAction = async (e) => {
 
     console.log('Client: ', city, startDate, endDate)
 
-    const res = await fetch('http://localhost:8000/travel',
+    const res = await fetch('http://localhost:8080/travel',
 
         {
             method: "POST",
