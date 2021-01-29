@@ -3,7 +3,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-#banner {
+#header {
     display: grid;
     grid-auto-rows: minmax(150px, auto);
     grid-template-columns: auto;
@@ -40,6 +40,19 @@ body {
     grid-gap: 1em;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+}
+
+#footer {
+    display: grid;
+    grid-auto-rows: minmax(150px, auto);
+    grid-template-columns: auto;
+    height: 15vh;
+    color: #355c7d;
+    justify-content: center;
+    grid-gap: 1em;
+    font-size: 20px;
+    font-family: 'Oswald',
+        sans-serif;
 }
 
 .holder {}
@@ -91,7 +104,7 @@ button {
     display: block;
     width: 300px;
     height: auto;
-    margin: 50px;
+    margin: auto;
     padding: 50px;
     background: #355c7d;
     color: #fff;
@@ -100,6 +113,11 @@ button {
     text-align: center;
     border: none;
     box-shadow: 2px 4px 5px #444;
+}
+
+button:hover {
+    background-color: yellow;
+    color: #355c7d;
 }
 
 h1 {

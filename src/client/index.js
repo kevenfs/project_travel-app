@@ -27,7 +27,16 @@ const performAction = async (e) => {
 
         const data = await res.json();
 
-        // 9. UPDATE THE WEATHER AND PHOTO ON THE CLIENT
+
+        //9. COUNT TRIP DURATION
+
+        const date1 = new Date(data.date.startDate);
+        const date2 = new Date(data.date.endDate);
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const duration = diffDays + " days"
+
+        // 10. UPDATE THE WEATHER AND PHOTO ON THE CLIENT
 
         document.querySelector('#cityResult').innerHTML = `
             <h2>
@@ -36,7 +45,7 @@ const performAction = async (e) => {
         `
         document.querySelector('#dates').innerHTML = `
             <p>
-                From ${data.date.startDate} to ${data.date.endDate}
+                From ${data.date.startDate} to ${data.date.endDate} (${duration})
             </p>
         `
         document.querySelector('#forecast').innerHTML = `

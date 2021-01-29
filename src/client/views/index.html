@@ -15,7 +15,7 @@
   <body>
     <div class="container-fluid">
 
-      <div id="banner">
+      <div id="header">
 
         <div class="row">
           <div class="col">
@@ -67,7 +67,28 @@
         </div>
 
       </div>
+
+      <div id="footer">
+
+        <div class="row">
+          <div class="col">
+            <h3>This app was created by KFS</h3>
+          </div>
+        </div>
+
+      </div>
+
     </div>
+
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
 
   </body>
 
