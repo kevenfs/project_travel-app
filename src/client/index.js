@@ -28,7 +28,7 @@ const performAction = async (e) => {
         const data = await res.json();
 
 
-        //9. COUNT TRIP DURATION
+        // 9. COUNT TRIP DURATION
 
         const date1 = new Date(data.date.startDate);
         const date2 = new Date(data.date.endDate);
