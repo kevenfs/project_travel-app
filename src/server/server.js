@@ -78,6 +78,7 @@ const getTravelInfo = async (request, response) => {
     // 8. PREPARE DATA FOR CLIENT
 
     let data = {}
+    data["city"] = city;
     data["date"] = {
         startDate: startDate,
         endDate: endDate

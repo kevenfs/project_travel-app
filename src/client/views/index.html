@@ -15,39 +15,49 @@
   <body>
     <div class="container-fluid">
 
-      <div class="row">
-        <div class="col">
-          <h1>Travel Planner</h1>
+      <div id="banner">
+
+        <div class="row">
+          <div class="col">
+            <h1>Travel Planner</h1>
+          </div>
         </div>
+
       </div>
 
-      <div class="row">
-        <div class="col">
-          <div class="holder city">
-            <label for="city">enter City name here</label>
-            <input type="text" id="city" placeholder="enter city name here">
-          </div>
-          <div class="holder date">
-            <label for="start">Start date:</label>
-            <input type="date" id="start" name="trip-start" value="2021-02-01" min="2021-02-01" max="2022-12-31">
-            <label for="end">End date:</label>
-            <input type="date" id="end" name="trip-end" value="2021-02-01" min="2021-02-01" max="2022-12-31">
-            <button id="generate" type="submit"> Submit </button>
+      <div id="trip">
+
+        <div class="row">
+          <div class="col">
+            <div class="holder city">
+              <label for="city">Where?</label>
+              <input type="text" id="city" placeholder="Enter city name here">
+            </div>
+            <div class="holder date">
+              <label for="start">Leave date:</label>
+              <input type="date" id="start" name="trip-start" value="2021-02-01" min="2021-02-01" max="2022-12-31">
+              <label for="end">Return date:</label>
+              <input type="date" id="end" name="trip-end" value="2021-02-01" min="2021-02-01" max="2022-12-31">
+              <button id="generate" type="submit"> Save trip </button>
+            </div>
           </div>
         </div>
+
       </div>
+
+      </br>
+      </br>
+      </br>
 
       <div id="app">
 
-        </br>
-        </br>
-        </br>
         <div class="row">
           <div class="col">
             <h2>Trip details</h2>
             <div class="holder entry">
-              <div class="title">Most Recent Entry</div>
+              <div class="title">Here are your most recent upcoming trip details:</div>
               <div id="entryHolder">
+                <div id="city"></div>
                 <div id="dates"></div>
                 <div id="forecast"></div>
                 <div id="image"></div>
@@ -55,6 +65,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
 

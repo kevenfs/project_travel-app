@@ -30,6 +30,7 @@ const performAction = async (e) => {
 
         // 9. UPDATE THE WEATHER AND PHOTO ON THE CLIENT
 
+        document.querySelector('#city').innerHTML = JSON.stringify(data.city);
         document.querySelector('#dates').innerHTML = JSON.stringify(data.date);
         document.querySelector('#forecast').innerHTML = JSON.stringify(data.weather);
         document.getElementById('image').innerHTML = `<img src=${data.image.image} />`;
