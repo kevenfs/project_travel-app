@@ -16,7 +16,6 @@ const getDataFromGeoNames = async (city) => {
 
         const coordinates = await res.json();
 
-        console.log(coordinates);
 
         return {
             lat: coordinates.geonames[0].lat,

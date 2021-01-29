@@ -20,7 +20,7 @@ body {
     display: grid;
     grid-auto-rows: minmax(150px, auto);
     grid-template-columns: auto;
-    height: 50vh;
+    height: auto;
     color: #355c7d;
     justify-content: center;
     grid-gap: 1em;
@@ -33,7 +33,7 @@ body {
     display: grid;
     grid-auto-rows: minmax(150px, auto);
     grid-template-columns: auto;
-    height: 50vh;
+    height: auto;
     background: #6c5b7b;
     color: #fff;
     justify-content: center;
@@ -89,13 +89,15 @@ input {
 
 button {
     display: block;
-    width: 400px;
-    height: 100px;
+    width: 300px;
+    height: auto;
     margin: 50px;
+    padding: 50px;
     background: #355c7d;
     color: #fff;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
+    text-align: center;
     border: none;
     box-shadow: 2px 4px 5px #444;
 }

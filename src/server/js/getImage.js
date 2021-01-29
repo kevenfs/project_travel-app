@@ -14,8 +14,6 @@ const getImageFromPixaBay = async (city) => {
 
         const image = await res.json();
 
-        console.log(image.hits[0].webformatURL);
-
         return {
             image: image.hits[0].webformatURL
         }

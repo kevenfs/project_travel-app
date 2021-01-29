@@ -42,12 +42,13 @@ app.listen(8080, function () {
 
 const getTravelInfo = async (request, response) => {
 
-    let city = request.body;
-    let date = request.body;
+    let city = request.body.city;
+    let startDate = request.body.startDate;
+    let endDate = request.body.endDate;
 
     // 1. GET CITY + DATE FROM CLIENT
 
-    console.log('Server: ', city, date)
+    console.log('Server: ', city, startDate, endDate)
 
     // 2. CALL TO GEONAMES
 
@@ -59,8 +60,6 @@ const getTravelInfo = async (request, response) => {
 
     // 4. CALL TO WEATHERBIT
 
-    let startDate = request.body.Arriving;
-    let endDate = request.body.Leaving;
     const weather = await getForecastFromWeatherBit(coordinates.lat, coordinates.lng, startDate, endDate);
 
     // 5. RECEIVE FROM WEATHERBIT

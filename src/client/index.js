@@ -18,22 +18,35 @@ const performAction = async (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                Where: city,
-                Arriving: startDate,
-                Leaving: endDate
+                city: city,
+                startDate: startDate,
+                endDate: endDate
             })
         });
     try {
 
         const data = await res.json();
-        console.log(data) // weather + image
 
         // 9. UPDATE THE WEATHER AND PHOTO ON THE CLIENT
 
-        document.querySelector('#city').innerHTML = JSON.stringify(data.city);
-        document.querySelector('#dates').innerHTML = JSON.stringify(data.date);
-        document.querySelector('#forecast').innerHTML = JSON.stringify(data.weather);
-        document.getElementById('image').innerHTML = `<img src=${data.image.image} />`;
+        document.querySelector('#cityResult').innerHTML = `
+            <h2>
+                ${city}
+            </h2>
+        `
+        document.querySelector('#dates').innerHTML = `
+            <p>
+                From ${data.date.startDate} to ${data.date.endDate}
+            </p>
+        `
+        document.querySelector('#forecast').innerHTML = `
+            <p>
+                Weather forecast: High: ${data.weather.max}, Low: ${data.weather.min}, Precipitation: ${data.weather.precipitation}
+            </p>
+        `
+        document.getElementById('image').innerHTML = `
+            <img src=${data.image.image} />
+        `;
 
         return data;
     } catch (error) {
